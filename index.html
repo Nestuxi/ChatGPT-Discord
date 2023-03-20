@@ -1,102 +1,117 @@
-<div id="smart-button-container">
-      <div style="text-align: center;">
-        <div style="margin-bottom: 1.25rem;">
-          <p>ChatGPT 3.5 - Discord Credits</p>
-          <select id="item-options"><option value="50 000" price="0.10">50 000 - 0.10 EUR</option><option value="100 000" price="0.20">100 000 - 0.20 EUR</option><option value="250 000" price="0.50">250 000 - 0.50 EUR</option><option value="500 000" price="1.00">500 000 - 1.00 EUR</option><option value="750 000" price="1.50">750 000 - 1.50 EUR</option><option value="1 000 000" price="2.00">1 000 000 - 2.00 EUR</option></select>
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <title>ChatGPT 3.5 - Discord Credits</title>
+</head>
+
+<body style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding-bottom: 100px; margin: 0; background-color: #ffffff;height: 100%; min-height: 100%; padding: 30px;">
+
+  <h2 style="text-align:center; margin-bottom:2%">ChatGPT 3.5 - Discord Credits</h2>
+  <div id="smart-button-container">
+    <div style="text-align: center;">
+      <div style="margin-bottom: 1.25rem; size: 200">
+        <label>
+          <select id="item-options" style="border: 1.5px solid; border-radius: 7px;font-size: 18px">
+            <option value="x50 000 credits" price="0.10">x50 000 credits - 0.10 EUR</option>
+            <option value="x100 000 credits" price="0.20">x100 000 credits - 0.20 EUR</option>
+            <option value="x250 000 credits" price="0.50">x250 000 credits - 0.50 EUR</option>
+            <option value="x500 000 credits" price="1.00">x500 000 credits - 1.00 EUR</option>
+            <option value="x750 000 credits" price="1.50">x750 000 credits- 1.50 EUR</option>
+            <option value="x1 000 000 credits" price="2.00">x1 000 000 credits - 2.00 EUR</option>
+          </select>
           <select style="visibility: hidden" id="quantitySelect"></select>
-        </div>
-      <div id="paypal-button-container"></div>
+        </label>
       </div>
+      <div id="paypal-button-container" style="margin-top:2%; margin-left:35%; margin-right:35%;"></div>
     </div>
-    <script src="https://www.paypal.com/sdk/js?client-id=AQhIKgiMWX4Ydrj3tCLS6BRxVlOeu61qfCXrvb5wRuqZIsVW-090csdkP6MBUj7c5ql7BsrkvrmpzIJA&enable-funding=venmo&currency=EUR" data-sdk-integration-source="button-factory"></script>
-    <script>
-      function initPayPalButton() {
-        var shipping = 0;
-        var itemOptions = document.querySelector("#smart-button-container #item-options");
-    var quantity = parseInt();
-    var quantitySelect = document.querySelector("#smart-button-container #quantitySelect");
-    if (!isNaN(quantity)) {
-      quantitySelect.style.visibility = "visible";
-    }
-    var orderDescription = 'ChatGPT 3.5 - Discord Credits';
-    if(orderDescription === '') {
-      orderDescription = 'Item';
-    }
-    paypal.Buttons({
-      style: {
-        shape: 'pill',
-        color: 'blue',
-        layout: 'vertical',
-        label: 'pay',
-        
-      },
-      createOrder: function(data, actions) {
-        var selectedItemDescription = itemOptions.options[itemOptions.selectedIndex].value;
-        var selectedItemPrice = parseFloat(itemOptions.options[itemOptions.selectedIndex].getAttribute("price"));
-        var tax = (0 === 0 || false) ? 0 : (selectedItemPrice * (parseFloat(0)/100));
-        if(quantitySelect.options.length > 0) {
-          quantity = parseInt(quantitySelect.options[quantitySelect.selectedIndex].value);
-        } else {
-          quantity = 1;
-        }
-
-        tax *= quantity;
-        tax = Math.round(tax * 100) / 100;
-        var priceTotal = quantity * selectedItemPrice + parseFloat(shipping) + tax;
-        priceTotal = Math.round(priceTotal * 100) / 100;
-        var itemTotalValue = Math.round((selectedItemPrice * quantity) * 100) / 100;
-
-        return actions.order.create({
-          purchase_units: [{
-            description: orderDescription,
-            amount: {
-              currency_code: 'EUR',
-              value: priceTotal,
-              breakdown: {
-                item_total: {
-                  currency_code: 'EUR',
-                  value: itemTotalValue,
-                },
-                shipping: {
-                  currency_code: 'EUR',
-                  value: shipping,
-                },
-                tax_total: {
-                  currency_code: 'EUR',
-                  value: tax,
-                }
-              }
-            },
-            items: [{
-              name: selectedItemDescription,
-              unit_amount: {
+  </div>
+  <script src="https://www.paypal.com/sdk/js?client-id=AQhIKgiMWX4Ydrj3tCLS6BRxVlOeu61qfCXrvb5wRuqZIsVW-090csdkP6MBUj7c5ql7BsrkvrmpzIJA&enable-funding=venmo&currency=EUR" data-sdk-integration-source="button-factory"></script>
+  <script>
+    function initPayPalButton() {
+      var shipping = 0;
+      var itemOptions = document.querySelector("#smart-button-container #item-options");
+      var quantity = parseInt();
+      var quantitySelect = document.querySelector("#smart-button-container #quantitySelect");
+      if (!isNaN(quantity)) {
+        quantitySelect.style.visibility = "visible";
+      }
+      var orderDescription = 'ChatGPT 3.5 - Discord Credits';
+      if (orderDescription === '') {
+        orderDescription = 'Item';
+      }
+      paypal.Buttons({
+        style: {
+          shape: 'pill',
+          color: 'blue',
+          layout: 'vertical',
+          label: 'pay',
+        },
+        createOrder: function(data, actions) {
+          var selectedItemDescription = itemOptions.options[itemOptions.selectedIndex].value;
+          var selectedItemPrice = parseFloat(itemOptions.options[itemOptions.selectedIndex].getAttribute("price"));
+          var tax = (0 === 0 || false) ? 0 : (selectedItemPrice * (parseFloat(0) / 100));
+          if (quantitySelect.options.length > 0) {
+            quantity = parseInt(quantitySelect.options[quantitySelect.selectedIndex].value);
+          } else {
+            quantity = 1;
+          }
+          tax *= quantity;
+          tax = Math.round(tax * 100) / 100;
+          var priceTotal = quantity * selectedItemPrice + parseFloat(shipping) + tax;
+          priceTotal = Math.round(priceTotal * 100) / 100;
+          var itemTotalValue = Math.round((selectedItemPrice * quantity) * 100) / 100;
+          return actions.order.create({
+            purchase_units: [{
+              description: orderDescription,
+              amount: {
                 currency_code: 'EUR',
-                value: selectedItemPrice,
+                value: priceTotal,
+                breakdown: {
+                  item_total: {
+                    currency_code: 'EUR',
+                    value: itemTotalValue,
+                  },
+                  shipping: {
+                    currency_code: 'EUR',
+                    value: shipping,
+                  },
+                  tax_total: {
+                    currency_code: 'EUR',
+                    value: tax,
+                  }
+                }
               },
-              quantity: quantity
+              items: [{
+                name: selectedItemDescription,
+                unit_amount: {
+                  currency_code: 'EUR',
+                  value: selectedItemPrice,
+                },
+                quantity: quantity
+              }]
             }]
-          }]
-        });
-      },
-      onApprove: function(data, actions) {
-        return actions.order.capture().then(function(orderData) {
-          
-          // Full available details
-          console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+          });
+        },
+        onApprove: function(data, actions) {
+          return actions.order.capture().then(function(orderData) {
+            // Full available details
+            console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+            // Show a success message within this page, e.g.
+            const element = document.getElementById('paypal-button-container');
+            element.innerHTML = '';
+            element.innerHTML = '<h3>Thank you for your payment!</h3>';
+            // Or go to another URL:  actions.redirect('thank_you.html');
+          });
+        },
+        onError: function(err) {
+          console.log(err);
+        },
+      }).render('#paypal-button-container');
+    }
+    initPayPalButton();
+  </script>
 
-          // Show a success message within this page, e.g.
-          const element = document.getElementById('paypal-button-container');
-          element.innerHTML = '';
-          element.innerHTML = '<h3>Thank you for your payment!</h3>';
+</body>
 
-          // Or go to another URL:  actions.redirect('thank_you.html');
-
-        });
-      },
-      onError: function(err) {
-        console.log(err);
-      },
-    }).render('#paypal-button-container');
-  }
-  initPayPalButton();
-    </script>
+</html>
