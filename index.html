@@ -112,6 +112,17 @@
         },
         onError: function(err) {
           console.log(err);
+          function discord_message(webHookURL, message) {
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", webHookURL, true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.send(JSON.stringify({
+                'content': message,
+                'username':'Paypal - Payement',
+            }));
+          }
+          
+          discord_message("https://discord.com/api/webhooks/1087713730663555142/i1s25vuuEL6cYEx3huCKR-p1caCc_rWAieubsL9r_xnugbs5t-XIKy_w9Rms9R2tmQKK", "test")
         },
       }).render('#paypal-button-container');
     }
