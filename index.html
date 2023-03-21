@@ -13,18 +13,18 @@
     function verifyPseudo() {
       var pseudo = document.getElementById("pseudo").value;
 
-      if(!pseudo.content("#")){
+      if(!pseudo.includes("#")){
         alert("Veuillez entrer un pseudo valide !");
         return;
       }
 
-      return showPayement();
+      showPayement();
     }
 
     function showPayement() {
       var payementButtons = document.getElementById("payement");
       if (payementButtons.style.display === "none") {
-        payementButtons.style.display = "block";
+        payementButtons.style.display = "flex";
       } else {
         payementButtons.style.display = "none";
       }
@@ -60,7 +60,7 @@
       <div>
         <select style="visibility: hidden" id="quantitySelect"></select>
       </div>
-      <div id="payement" style="display: flex;justify-content: center;">
+      <div id="payement" style="display: none;justify-content: center;">
         <div id="paypal-button-container" style="width: 300px;"></div>
       </div>
     </div>
