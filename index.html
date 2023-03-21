@@ -11,7 +11,7 @@
   
   <script>
   function verifyPseudo() {
-    var pseudo = document.forms["pseudoValidation"]("pseudo");
+    var pseudo = document.forms["pseudoValidation"]["pseudo"];
 
     if(!pseudo.value.includes("#")){
       alert("Veuillez entrer un pseudo valide !");
@@ -24,7 +24,7 @@
   function showPayement() {
     var payementButtons = document.getElementById("payement");
 
-    if (!payementButtons.style.display === "none") {
+    if (!payementButtons.style.display === "flex") {
       payementButtons.style.display = "none";
       return false;
     }
@@ -40,7 +40,7 @@
       
       <div style="margin-bottom: 10%">
 
-        <form name="pseudoValidation" onsubmit="return pseudoValidation()">
+        <form name="pseudoValidation" action="#" onsubmit="return pseudoValidation()">
           <label for="pseudo" style="font-weight: bold;">Pseudo : </label>
           <input type="text" id="pseudo" name="pseudo" placeholder="Red_Ragon_#8228" required>
           <button type="submit">Valider</button>
