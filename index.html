@@ -9,42 +9,44 @@
 
 <body style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;width: 100%;height: 100%;margin: 0;">
   
-  <script>
-  function verifyPseudo() {
-    var pseudo = document.forms["pseudoValidation"]["pseudo"];
-
-    if(!pseudo.value.includes("#")){
-      alert("Veuillez entrer un pseudo valide !");
-      return false;
-    }
-
-    return showPayement();
-  }
-
-  function showPayement() {
-    var payementButtons = document.getElementById("payement");
-
-    if (!payementButtons.style.display === "flex") {
-      payementButtons.style.display = "none";
-      return false;
-    }
-
-    payementButtons.style.display = "flex";
-      return true;
-  }
-</script>
-  
   <div id="smart-button-container" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
     <h2 style="text-align:center;">ChatGPT 3.5 - Discord Credits</h2>
     <div style="text-align: center;">
       
       <div style="margin-bottom: 10%">
 
-        <form name="pseudoValidation" action="#" onsubmit="return pseudoValidation()">
+        <form name="pseudoValidation" onsubmit="return verifyPseudo()">
           <label for="pseudo" style="font-weight: bold;">Pseudo : </label>
           <input type="text" id="pseudo" name="pseudo" placeholder="Red_Ragon_#8228" required>
-          <button type="submit">Valider</button>
+          <button id="validButton" type="submit">Valider</button>
         </form>
+        
+        <script>
+          function verifyPseudo() {
+            var pseudo = document.forms["pseudoValidation"]["pseudo"];
+
+            if(!pseudo.value.includes("#")){
+              alert("Veuillez entrer un pseudo valide !");
+              return false;
+            }
+            return showPayement();
+          }
+
+          function showPayement() {
+            var payementButtons = document.getElementById("payement");
+            var pseudoField = document.getElementById("pseudo");
+            var validButton = document.getElementById("validButton");
+
+            if (!payementButtons.style.display === "flex") {
+              payementButtons.style.display = "none";
+              return false;
+            }
+            pseudoField.disabled = true;
+            validButton.disabled = true;
+            payementButtons.style.display = "flex";
+            return false;
+          }
+        </script>
         
       </div>
       
