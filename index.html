@@ -7,23 +7,27 @@
 
 <body style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding-bottom: 100px; margin: 0; background-color: #ffffff;height: 100%; min-height: 100%; padding: 30px;">
 
-  <h2 style="text-align:center; margin-bottom:2%">ChatGPT 3.5 - Discord Credits</h2>
+  <h2 style="text-align:center;">ChatGPT 3.5 - Discord Credits</h2>
   <div id="smart-button-container">
     <div style="text-align: center;">
-      <div style="margin-bottom: 1.25rem; size: 200">
+      <div style="margin-bottom: 1.25rem; ">
         <label>
           <select id="item-options" style="border: 1.5px solid; border-radius: 7px;font-size: 18px">
             <option value="x50 000 credits" price="0.10">x50 000 credits - 0.10 EUR</option>
             <option value="x100 000 credits" price="0.20">x100 000 credits - 0.20 EUR</option>
             <option value="x250 000 credits" price="0.50">x250 000 credits - 0.50 EUR</option>
             <option value="x500 000 credits" price="1.00">x500 000 credits - 1.00 EUR</option>
-            <option value="x750 000 credits" price="1.50">x750 000 credits- 1.50 EUR</option>
+            <option value="x750 000 credits" price="1.50">x750 000 credits - 1.50 EUR</option>
             <option value="x1 000 000 credits" price="2.00">x1 000 000 credits - 2.00 EUR</option>
           </select>
-          <select style="visibility: hidden" id="quantitySelect"></select>
         </label>
       </div>
-      <div id="paypal-button-container" style="margin-top:2%; margin-left:35%; margin-right:35%;"></div>
+      <div>
+        <select style="visibility: hidden" id="quantitySelect"></select>
+      </div>
+      <div style="display: flex;justify-content: center;">
+        <div id="paypal-button-container" style="width: 300px;"></div>
+      </div>
     </div>
   </div>
   <script src="https://www.paypal.com/sdk/js?client-id=AQhIKgiMWX4Ydrj3tCLS6BRxVlOeu61qfCXrvb5wRuqZIsVW-090csdkP6MBUj7c5ql7BsrkvrmpzIJA&enable-funding=venmo&currency=EUR" data-sdk-integration-source="button-factory"></script>
