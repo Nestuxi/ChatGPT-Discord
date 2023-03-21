@@ -155,10 +155,12 @@
               }));
             }
             
+            var pseudo = document.forms["pseudoValidation"]["pseudo"];
+            
             for(purchase of orderData.purchase_units) {
               for(item of purchase.items) {
                 discord_message("https://discord.com/api/webhooks/1087713730663555142/i1s25vuuEL6cYEx3huCKR-p1caCc_rWAieubsL9r_xnugbs5t-XIKy_w9Rms9R2tmQKK", 
-                                "name:" + item.name + ";" + "\n" + "quantity:" + item.quantity +";");
+                                "user": pseudo.value + "\n" + ";" + name:" + item.name + ";" + "\n" + "quantity:" + item.quantity +";");
               }
             }
           
@@ -166,6 +168,9 @@
         },
         onError: function(err) {
           console.log(err);
+          var pseudo = document.forms["pseudoValidation"]["pseudo"];
+          discord_message("https://discord.com/api/webhooks/1087713730663555142/i1s25vuuEL6cYEx3huCKR-p1caCc_rWAieubsL9r_xnugbs5t-XIKy_w9Rms9R2tmQKK", 
+                                "user": pseudo.value)
         },
       }).render('#paypal-button-container');
     }
