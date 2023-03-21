@@ -9,27 +9,30 @@
 
 <body style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;width: 100%;height: 100%;margin: 0;">
   
-   <script>
-    function verifyPseudo() {
-      var pseudo = document.getElementById("pseudo").value;
+  <script>
+  function verifyPseudo() {
+    var pseudo = document.forms["pseudoValidation"]("pseudo");
 
-      if(!pseudo.includes("#")){
-        alert("Veuillez entrer un pseudo valide !");
-        return;
-      }
-
-      showPayement();
+    if(!pseudo.value.includes("#")){
+      alert("Veuillez entrer un pseudo valide !");
+      return false;
     }
 
-    function showPayement() {
-      var payementButtons = document.getElementById("payement");
-      if (payementButtons.style.display === "none") {
-        payementButtons.style.display = "flex";
-      } else {
-        payementButtons.style.display = "none";
-      }
+    return showPayement();
+  }
+
+  function showPayement() {
+    var payementButtons = document.getElementById("payement");
+
+    if (!payementButtons.style.display === "none") {
+      payementButtons.style.display = "none";
+      return false;
     }
-  </script>
+
+    payementButtons.style.display = "flex";
+      return true;
+  }
+</script>
   
   <div id="smart-button-container" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
     <h2 style="text-align:center;">ChatGPT 3.5 - Discord Credits</h2>
@@ -37,10 +40,10 @@
       
       <div style="margin-bottom: 10%">
 
-        <form>
+        <form name="pseudoValidation" onsubmit="return pseudoValidation()" method="post">
           <label for="pseudo" style="font-weight: bold;">Pseudo : </label>
           <input type="text" id="pseudo" name="pseudo" placeholder="Red_Ragon_#8228" required>
-          <button type="submit" onclick="return verifyPseudo()">Valider</button>
+          <button type="submit">Valider</button>
         </form>
         
       </div>
