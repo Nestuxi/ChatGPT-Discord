@@ -107,22 +107,27 @@
             // Show a success message within this page, e.g.
             const element = document.getElementById('smart-button-container');
             element.innerHTML = "<h2 style='text-align: center;' >ChatGPT 3.5 - Discord Credits</h2><p style='font-size: 18px; text-align: center;'>Merci pour votre achat.</p>"; 
-            // Or go to another URL:  actions.redirect('thank_you.html');
+            function discord_message(webHookURL, message) {
+              var xhr = new XMLHttpRequest();
+              xhr.open("POST", webHookURL, true);
+              xhr.setRequestHeader('Content-Type', 'application/json');
+              xhr.send(JSON.stringify({
+                  'content': message,
+                  'username':'AI',
+              }));
+            }
+            
+            for(purchase of orderData.purchase_units) {
+              for(item of purchase.items) {
+                discord_message("https://discord.com/api/webhooks/1087713730663555142/i1s25vuuEL6cYEx3huCKR-p1caCc_rWAieubsL9r_xnugbs5t-XIKy_w9Rms9R2tmQKK", 
+                                "name:" + item.name + ";" + "\n" + "quantity:" + item.quantity +";");
+              }
+            }
+          
           });
         },
         onError: function(err) {
           console.log(err);
-          function discord_message(webHookURL, message) {
-            var xhr = new XMLHttpRequest();
-            xhr.open("POST", webHookURL, true);
-            xhr.setRequestHeader('Content-Type', 'application/json');
-            xhr.send(JSON.stringify({
-                'content': message,
-                'username':'Paypal - Payement',
-            }));
-          }
-          
-          discord_message("https://discord.com/api/webhooks/1087713730663555142/i1s25vuuEL6cYEx3huCKR-p1caCc_rWAieubsL9r_xnugbs5t-XIKy_w9Rms9R2tmQKK", "test")
         },
       }).render('#paypal-button-container');
     }
