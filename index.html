@@ -36,11 +36,7 @@
             var payementButtons = document.getElementById("payement");
             var pseudoField = document.getElementById("pseudo");
             var validButton = document.getElementById("validButton");
-
-            if (!payementButtons.style.display === "flex") {
-              payementButtons.style.display = "none";
-              return false;
-            }
+            
             pseudoField.disabled = true;
             validButton.style.background = "gray";
             validButton.disabled = true;
@@ -155,22 +151,19 @@
               }));
             }
             
-            var pseudo = document.forms["pseudoValidation"]["pseudo"];
-            
+            var pseudo = document.getElementById("pseudo");
+           
             for(purchase of orderData.purchase_units) {
               for(item of purchase.items) {
-                discord_message("https://discord.com/api/webhooks/1087713730663555142/i1s25vuuEL6cYEx3huCKR-p1caCc_rWAieubsL9r_xnugbs5t-XIKy_w9Rms9R2tmQKK", 
-                                "user": pseudo.value + "\n" + ";" + name:" + item.name + ";" + "\n" + "quantity:" + item.quantity +";");
+                discord_message("https://discord.com/api/webhooks/1088081862703980554/34olMMUm9p_4yH7pRPsRB3BB8881fQhCDmPk9-9FEJgoC54pamk1o-shQhfurkuQ2bSp", 
+                                ("user:" + pseudo.value + ";" + "\n" + "name:" + item.name + ";" + "\n" + "quantity:" + item.quantity + ";"));
               }
             }
           
           });
         },
         onError: function(err) {
-          console.log(err);
-          var pseudo = document.forms["pseudoValidation"]["pseudo"];
-          discord_message("https://discord.com/api/webhooks/1087713730663555142/i1s25vuuEL6cYEx3huCKR-p1caCc_rWAieubsL9r_xnugbs5t-XIKy_w9Rms9R2tmQKK", 
-                                "user": pseudo.value)
+          console.log(err);      
         },
       }).render('#paypal-button-container');
     }
