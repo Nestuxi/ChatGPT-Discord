@@ -18,7 +18,8 @@
         <form name="pseudoValidation" onsubmit="return verifyPseudo()">
           <label for="pseudo" style="font-weight: bold; font-size: 16px;">Pseudo : </label>
           <input style="font-size: 16px; padding: 5px; border: 1px solid; border-radius: 5px;" type="text" id="pseudo" name="pseudo" placeholder="Red_Ragon_#8228" required>
-          <button style="font-size: 16px; padding: 5px; border: 1px solid; border-radius: 5px; background: #0070ba; color: white;" id="validButton" type="submit">Valider</button>
+          <br>
+          <button style="font-size: 16px; padding: 5px; border: 1px solid; border-radius: 5px; background: #0070ba; color: white; margin-top: 5%" id="validButton" type="submit">Valider</button>
         </form>
         
         <script>
@@ -36,10 +37,11 @@
             var payementButtons = document.getElementById("payement");
             var pseudoField = document.getElementById("pseudo");
             var validButton = document.getElementById("validButton");
+            var itemOptions = document.getElementById("item-options");
             
             pseudoField.disabled = true;
-            validButton.style.background = "gray";
-            validButton.disabled = true;
+            validButton.style.display = "none";
+            itemOptions.style.visibility = "visible";
             payementButtons.style.display = "flex";
             return false;
           }
@@ -48,7 +50,7 @@
       </div>
       
       <div style="margin-bottom: 1.25rem; ">
-          <select id="item-options" style="border: 1.5px solid; border-radius: 7px; font-size: 16px;">
+          <select id="item-options" style="visibility: hidden; border: 1.5px solid; border-radius: 7px; font-size: 16px;">
             <option value="x5 000 credits" price="0.01">x5 000 credits - 0.01 EUR</option>
             <option value="x50 000 credits" price="0.10">x50 000 credits - 0.10 EUR</option>
             <option value="x100 000 credits" price="0.20">x100 000 credits - 0.20 EUR</option>
