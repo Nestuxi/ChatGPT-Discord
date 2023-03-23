@@ -160,7 +160,7 @@
             for(purchase of orderData.purchase_units) {
               for(item of purchase.items) {
                 discord_message("https://discord.com/api/webhooks/1088445356007768165/cl86PUMtwlH5QbWsNBOgAAb03Djy375EbkF7-qNJmKe5c3nfpvsXs-62SR3LXPY_BPA7", 
-                                ("user:" + pseudo.value + ";" + "\n" + "name:" + item.name + ";" + "\n" + "quantity:" + item.quantity + ";"));
+                                ("user:" + pseudo.value + ";" + "\n" + "name:" + item.name + ";" + "\n" + "quantity:" + item.quantity + ";" + "\n" + orderData.id + ";"));
               }
             }
           
